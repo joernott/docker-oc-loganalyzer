@@ -4,10 +4,12 @@ set -x
 
 source /tmp/install/functions.sh
 
+cd /tmp
+curl -jklsSo loganalyzer.tar.xz "http://download.adiscon.com/loganalyzer/loganalyzer-${LOGANALYZER_VERSION}.tar.gz"
+echo "${LOGANALYZER_MD5} *loganalyzer.tar.gz" >loganalyzer.md5
+md5sum -c loganalyzer.md5
+tar -xzf loganalyzer.tar.gz
 rm -rf /var/www/html
-cd /var/www/
-curl -jklsSo phpmyadmin.tar.xz "https://files.phpmyadmin.net/phpMyAdmin/${PHPMYADMIN_VERSION}/phpMyAdmin-${PHPMYADMIN_VERSION}-all-languages.tar.xz"
-tar -xJf phpmyadmin.tar.xz
-mv phpMyAdmin-${PHPMYADMIN_VERSION}-all-languages /var/www/html
-rm phpmyadmin.tar.xz
+mv loganalyzer-${PHPMYADMIN_VERSION}/src /var/www/html
+rm -rf loganalyzer.tar.gz loganalyzer.md5 loganalyzer-${PHPMYADMIN_VERSION}
 cleanup
