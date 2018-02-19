@@ -11,5 +11,5 @@ md5sum -c loganalyzer.md5
 tar -xzf loganalyzer.tar.gz
 rm -rf /var/www/html
 mv loganalyzer-${LOGANALYZER_VERSION}/src /var/www/html
-rm -rf loganalyzer.tar.gz loganalyzer.md5 loganalyzer-${PHPMYADMIN_VERSION}
+rm -rf loganalyzer.tar.gz loganalyzer.md5 loganalyzer-${PHPMYADMIN_VERSION} /etc/httpd/conf.d/ssl.conf
 cleanup
