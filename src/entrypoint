@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+source /etc/sysconfig/httpd
+
+if [ -z "${PIDFILE}" ]; then
+    PIDFILE=/var/run/httpd/httpd.pid
+fi
+
+if [ -f "${PIDFILE}" ]; then
+    rm "${PIDFILE}"
+fi
+
+chown -R apache:apache /var/www/html
+
+if [ -n "${SERVERNAME}" ]; then
+    sed -e "s/ServerName.*/ServerName ${SERVERNAME}/" -i /etc/httpd/conf.d/loganalyzer.conf
+fi
+if [ -n "${SERVERALIAS}" ]; then
+    sed -e "s/#ServerAlias./ServerAlias ${SERVERALIAS}/" -i /etc/httpd/conf.d/loganalyzer.conf
+fi
+if [ -f /etc/pki/tls/certs/chain.crt ]; then
+    sed -e 's/#SSLCertificateChainFile/SSLCertificateChainFile/' -i /etc/httpd/conf.d/loganalyzer.conf
+fi
+/usr/sbin/httpd -DFOREGROUND "$@"
