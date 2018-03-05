@@ -11,7 +11,7 @@ if [ -f "${PIDFILE}" ]; then
 fi
 
 chown -R apache:apache /var/www/html
-
+chmod a+r /var/log/*
 if [ -n "${SERVERNAME}" ]; then
     sed -e "s/ServerName.*/ServerName ${SERVERNAME}/" -i /etc/httpd/conf.d/loganalyzer.conf
 fi
