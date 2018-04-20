@@ -18,10 +18,11 @@ echo "${LOGANALYZER_MD5} *loganalyzer.tar.gz" >loganalyzer.md5
 md5sum -c loganalyzer.md5
 tar -xzf loganalyzer.tar.gz
 rm -rf /var/www/html
-mv loganalyzer-${LOGANALYZER_VERSION}/src /var/www/html
+mkdir -p /var/www/html/adm
+mv loganalyzer-${LOGANALYZER_VERSION}/src /var/www/html/adm/loganalyzer
 rm -rf loganalyzer.tar.gz loganalyzer.md5 loganalyzer-${LOGANALYZER_VERSION}
 # Until https://github.com/rsyslog/loganalyzer/issues/21 is resolved
-sed -i /var/www/html/include/functions_frontendhelpers.php \
+sed -i /var/www/html/adm/loganalyzer/include/functions_frontendhelpers.php \
     -e "s|content\['CURRENTURL'\] =.*|content['CURRENTURL'] = ltrim(\$_SERVER['PHP_SELF'],'/');|"
 configure_apache
 cleanup
