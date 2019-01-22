@@ -1,5 +1,8 @@
 # Docker image: LogAnalyzer on CentOS 7 with Apache and PHP 5.6 from IUS
 
+This is the php5 based branch. As PHP 5.6 is quite outdated, the main branch
+will be switched to PHP 7.x
+
 Running LogAnalyzer (http://loganalyzer.adiscon.com/downloads/). You should expose /var/log to
 the container (e.g. from a running rsyslog container)
 
@@ -23,7 +26,7 @@ Set the enviromnemt variable SERVERNAME to math thew server name to the certific
 docker run -d -p 443:443 \
     -v /data/loganalyzer/var/www/html/include/config.php:/var/www/html/include/config.php \
     -v /data/rsyslog/var/log:/var/log \
-    registry.ott-consult.de/oc/loganalyzer:latest
+    registry.ott-consult.de/oc/loganalyzer:php5latest
 ```
 ### Full example
 ```
@@ -36,5 +39,5 @@ docker run -d -p 443:443  \
     -v /etc/pki/tls/private/logs.example.com.key:/etc/pki/tls/private/server.key \
     -v /data/loganalyzer/var/www/html/include/config.php:/var/www/html/include/config.php \
     -v /data/rsyslog/var/log:/var/log \
-    registry.ott-consult.de/oc/loganalyzer:latest
+    registry.ott-consult.de/oc/loganalyzer:php5latest
 ```
