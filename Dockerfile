@@ -1,4 +1,4 @@
-FROM registry.ott-consult.de/oc/apache-php:5.6
+FROM registry.ott-consult.de/oc/apache-php:latest
 LABEL MAINTAINER="joern.ott@ott-consult.de"
 
 ENV LOGANALYZER_VERSION="4.1.7" \
