@@ -13,7 +13,7 @@ function configure_apache() {
 }
 
 cd /tmp
-curl -jklsSo loganalyzer.tar.gz "http://download.adiscon.com/loganalyzer/loganalyzer-${LOGANALYZER_VERSION}.tar.gz"
+curl -jklsSo loganalyzer.tar.gz "https://download.adiscon.com/loganalyzer/loganalyzer-${LOGANALYZER_VERSION}.tar.gz"
 echo "${LOGANALYZER_MD5} *loganalyzer.tar.gz" >loganalyzer.md5
 md5sum -c loganalyzer.md5
 tar -xzf loganalyzer.tar.gz
